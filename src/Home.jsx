@@ -9,12 +9,19 @@ const Home = () => {
   useEffect (() => {
     fetch ('http://localhost:8000/blogs')
     .then(res => {
+      console.log(res);
+      if(res.ok) {
+        
+      }
       return res.json();
     })
     .then((data) => {
       console.log(data);
       setBlogs(data);
       setIsPending(false);
+    })
+    .catch(err => {
+      console.log(err.message);
     })
   }, []); 
   // name is the dependency that we add into the second argument if we wanna run this function when the state changes (only if we want it for this state)
